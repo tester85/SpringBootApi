@@ -1,0 +1,45 @@
+jwt:
+  secret: '[a-zA-Z]0-9._]^+$Guidelines89797987forAlphabeticalArraNumeralsandOtherSymbo$'
+
+server:
+  port: 8080
+  
+spring:    datasource:
+      url: jdbc:mysql://localhost:3306/agencia
+      username: root
+    jpa:      show-sql: true
+      hibernate:        ddl-auto: update
+      properties:        hibernate:
+          dialect: org.hibernate.dialect.MySQL5Dialect         
+
+#spring:
+#  jpa:
+#    database: POSTGRESQL
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: create-drop
+#  datasource:
+#    platform: postgres
+#    url: jdbc:postgresql://localhost:5432/mydb
+#    username: postgres
+#    password: postgres
+#    driverClassName: org.postgresql.Driver
+
+
+
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+#    properties:
+#      hibernate.jdbc.batch_size: 20
+#      hibernate.cache.use_query_cache: false
+#      hibernate.cache.use_second_level_cache: false
+#      hibernate.cache.use_structured_entries: false
+#      hibernate.cache.use_minimal_puts: false
+      
+#  datasource:
+#    #SPRING_DATASOURCE_URL environment variable will be something like -> jdbc:sqlserver://MySqlServer\\MyInstance:1433;DatabaseName=MyDbName;
+#    url: ${SPRING_DATASOURCE_URL}
+#    username: ${SPRING_DATASOURCE_USERNAME}
+#    password: ${SPRING_DATASOURCE_PASSWORD}
+#    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
