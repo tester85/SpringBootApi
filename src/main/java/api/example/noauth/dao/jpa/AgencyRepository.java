@@ -11,6 +11,6 @@ import api.example.noauth.domain.Agency;
 public interface AgencyRepository extends CrudRepository<Agency, Long> {
 
 	Agency findAgenciaByCity(String city);
-	Optional<Agency> getAgenciaById(long id);
+	Agency getAgenciaById(long id);
 	// Page findAll(Pageable pageable);
 }

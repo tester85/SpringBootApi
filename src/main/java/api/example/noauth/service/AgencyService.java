@@ -29,7 +29,7 @@ public class AgencyService {
 		return agencyR.save(agency);
 	}
 
-	public Optional<Agency> getAgencia(long id) {
+	public Agency getAgencia(long id) {
 		return agencyR.getAgenciaById(id);
 	}
 
