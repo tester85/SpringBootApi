@@ -1,17 +1,26 @@
-jwt:
-  secret: '[a-zA-Z]0-9._]^+$Guidelines89797987forAlphabeticalArraNumeralsandOtherSymbo$'
+##jwt:
+#  secret: '[a-zA-Z]0-9._]^+$Guidelines89797987forAlphabeticalArraNumeralsandOtherSymbo$'
 
 server:
   port: 8080
   
-spring:    datasource:
+spring:
+    security:
+      user:        name: test
+        password: test
+        roles:        - SUPERUSER       datasource:
       url: jdbc:mysql://localhost:3306/agencia
       username: root
     jpa:      show-sql: true
       hibernate:        ddl-auto: update
       properties:        hibernate:
-          dialect: org.hibernate.dialect.MySQL5Dialect         
-
+          dialect: org.hibernate.dialect.MySQL5Dialectmanagement:  endpoint:    beans:      enabled: false
+    health:
+      show-details: ALWAYS      
+  server:    base-path: /manage
+    port: 8081
+    address: 127.0.0.1       
+    
 #spring:
 #  jpa:
 #    database: POSTGRESQL
