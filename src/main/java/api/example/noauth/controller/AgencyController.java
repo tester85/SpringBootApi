@@ -1,4 +1,4 @@
-package api.example.noauth.rest;
+package api.example.noauth.controller;
 import api.example.noauth.domain.Agency;
 
 import java.util.List;
