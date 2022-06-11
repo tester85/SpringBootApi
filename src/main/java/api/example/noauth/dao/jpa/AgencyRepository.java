@@ -1,6 +1,6 @@
 package api.example.noauth.dao.jpa;
 
-import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
 import api.example.noauth.domain.Agency;
@@ -8,7 +8,7 @@ import api.example.noauth.domain.Agency;
  * // extends PagingAndSortingRepository<Agencia, Long> {
  *  paging results
  * */
-public interface AgencyRepository extends CrudRepository<Agency, Long> {
+public interface AgencyRepository extends JpaRepository<Agency, Long> {
 
 	Agency findAgenciaByCity(String city);
 	Agency getAgenciaById(long id);

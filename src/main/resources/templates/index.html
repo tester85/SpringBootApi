@@ -1,25 +1,87 @@
-<div th:switch="${users}">
-    <h2 th:case="null">No users yet!</h2>
-        <div th:case="*">
-            <h2>Users</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr th:each="user : ${users}">
-                    <td th:text="${user.name}"></td>
-                    <td th:text="${user.email}"></td>
-                    <td><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td>
-                    <td><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>      
-    <p><a href="/signup">Add a new user</a></p>
-</div>
+<!DOCTYPE html>
+<html xlmns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title>Agencias </title>
+	<link rel="stylesheet" href="/css/bootstrap.min.css" />
+</head>
+
+<body>
+	<!--<div th:replace="fragments/header :: header">   -->
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Static header</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!--</div>-->
+	<div class="container">
+		<div class="hero-unit">
+			<h1>Test</h1>
+			<p>
+				Welcome to the Spring MVC Quickstart application!
+				Get started quickly by signing up.
+			</p>
+			<p>
+				<a href="/signup" th:href="@{/signup}" class="btn btn-large btn-success">Sign up</a>
+			</p>
+		</div>
+		<!--<div th:replace="fragments/footer :: footer">&copy; 2016 The Static Templates</div>-->
+	</div>
+	...
+	<div class="container" th:switch="${users}">
+		<h4 th:case="null">
+			<div class="container">
+				<div class="row">
+					<h2>No se encuentran registros de Agencias</h2>
+				</div>
+				<table class="table table-stripped table-bordered">
+					<thead class="table-dark">
+						<tr>
+							<th>Name</th>
+							<th>Description</th>
+							<th>City</th>
+							<th>Reservations</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+			</h2>
+			<div th:case="*">
+				<h4>Agencias</h4>
+				<div class="container">
+					<table class="table">
+						<thead class="table-dark">
+							<tr>
+								<th>Name</th>
+								<th>Description</th>
+								<th>City</th>
+								<th>Reservations</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="agenc : ${agency}">
+								<td th:text="${agenc.name}"></td>
+								<td th:text="${agenc.description}"></td>
+								<td th:text="${agenc.city}"></td>
+								<td th:text="${agenc.reservations}"></td>
+								<td><a th:href="@{/edit/{id}(id=${agenc.id})}">Edit</a></td>
+								<td><a th:href="@{/delete/{id}(id=${agenc.id})}">Delete</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<p><a href="/" th:href="@{/}" class="btn btn-success">Add a new Agency</a></p>
+	</div>
+</body>
+
+</html>

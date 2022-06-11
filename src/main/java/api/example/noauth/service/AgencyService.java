@@ -11,13 +11,10 @@ import api.example.noauth.dao.jpa.AgencyRepository;
 import api.example.noauth.domain.Agency;
 
 @Service
-public class AgencyService {
+public class AgencyService implements AgencyServiceInterface {
 
-	public static final Logger Log = LoggerFactory.getLogger(Agency.class);
-
-	// @Autowired
-	// CounterService counterService;
-
+	public static final Logger Log = LoggerFactory.getLogger(Agency.class); 
+	
 	@Autowired
 	private AgencyRepository agencyR;
 

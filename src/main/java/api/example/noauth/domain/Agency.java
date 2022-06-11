@@ -12,16 +12,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Agency {
 
 	@Id
-    @GeneratedValue()
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 30, unique = true)
     private String name;
 
-    @Column()
+    @Column(length = 250)
     private String description;
 
-    @Column()
+    @Column(length = 120)
     String city;
 
     @Column()

@@ -14,7 +14,8 @@ spring:
     jpa:      show-sql: true
       hibernate:        ddl-auto: update
       properties:        hibernate:
-          dialect: org.hibernate.dialect.MySQL5Dialectmanagement:  endpoint:    beans:      enabled: false
+          dialect: org.hibernate.dialect.MySQL5Dialect
+          management:  endpoint:    beans:      enabled: false
     health:
       show-details: ALWAYS      
   server:    base-path: /manage
