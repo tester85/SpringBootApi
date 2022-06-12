@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xlmns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title>Agencias </title>
+	<link rel="stylesheet" href="/css/bootstrap.min.css" />
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<a class="navbar-brand" href="#">Control de Agencias</a>
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="/agency" th:href="@{/agency}">List all Agency</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/" th:href="@{/}">Add a new Agency</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/" th:href="@{/}">Update Agency</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/" th:href="@{/}">Delete Agency</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<!--</div>-->
+
+	<div class="container">
+		<div><br/>
+			<h4>Listado de Agencias</h4>
+			<div class="container">
+				<table class="table">
+					<thead class="table-dark">
+						<tr > 
+							<th>Name</th>
+							<th>Description</th>
+							<th class="text-center">City</th>
+							<th class="text-center">Reservations</th>
+						</tr>
+					</thead>
+					<tbody>
+						<th:block th:each="value : ${agency}">
+							<tr>								
+								<td th:text="${value.name}"></td>
+								<td th:text="${value.description}"></td>
+								<td class="text-center" th:text="${value.city}"></td>
+								<td class="text-center" th:text="${value.reservaciones}"></td>
+								<!--<td><a th:href="@{/edit/{id}(id=${value.id})}">Edit</a></td>
+								<td><a th:href="@{/delete/{id}(id=${value.id})}">Delete</a></td>-->
+							</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<p><a href="/" th:href="@{/}" class="btn btn-success">Go Back</a></p>
+	</div>
+</body>
+
+</html>

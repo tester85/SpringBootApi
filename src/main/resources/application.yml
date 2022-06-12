@@ -15,11 +15,16 @@ spring:
       hibernate:        ddl-auto: update
       properties:        hibernate:
           dialect: org.hibernate.dialect.MySQL5Dialect
-          management:  endpoint:    beans:      enabled: false
+          management:  endpoint:    beans:      enabled: true
+    info:      enabled: true
+    shutdown:      enabled: true    
+    metrics:      enabled: true      
     health:
-      show-details: ALWAYS      
+      show-details: ALWAYS
+    security:
+      enabled: false 
   server:    base-path: /manage
-    port: 8081
+    port: 9000
     address: 127.0.0.1       
     
 #spring:

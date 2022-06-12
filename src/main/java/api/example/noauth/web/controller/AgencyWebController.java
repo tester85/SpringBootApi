@@ -1,6 +1,9 @@
 package api.example.noauth.web.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -13,8 +16,7 @@ import api.example.noauth.dao.jpa.AgencyRepository;
 import api.example.noauth.domain.Agency;
 import api.example.noauth.service.AgencyService; 
 
-@RestController
-@RequestMapping(value="/")
+@Controller 
 public class AgencyWebController {
 		
 	@Autowired
@@ -27,19 +29,37 @@ public class AgencyWebController {
 	public String showSignUpAgency(Agency agency) {		
 		return "add-agency";
 	}	
+
+	@GetMapping("/agency")
+	public String showMainPage(Model model) {
+		List<Agency> agencies = agencyS.findAll();
+		model.addAttribute("agency",agencies);
+		return "agency"; 
+	}	
 	
 	@PostMapping("/addagency")
 	public String addAgency(@Validated Agency agency, BindingResult result, Model model) {		
 		if(result.hasErrors()) {
-			return "add-agency";
+			return "addagency";
 		}
 		agencyR.save(agency);
-		return "redirect:/index";
+		return "redirect:/agency";
+	}
+	@PostMapping("/updagency")
+	public String updAgency(@Validated Agency agency, BindingResult result, Model model) {		
+		if(result.hasErrors()) {
+			return "updAgency";
+		}
+		agencyR.save(agency);
+		return "redirect:/agency";
 	}
 	
-	@GetMapping("/index")
-	public String showUserList(Model model) {
-		model.addAttribute("agency",agencyS.findAll());
-		return "agency"; 
+	@PostMapping("/delagency")
+	public String delAgency(@Validated Agency agency, BindingResult result, Model model) {		
+		if(result.hasErrors()) {
+			return "delAgency";
+		}
+		agencyR.delete(agency);
+		return "redirect:/agency";
 	}
 }

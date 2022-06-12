@@ -23,7 +23,7 @@ public class AgencyController extends ApiAbstractHandler{
 	@Autowired
 	private AgencyService agencyServ;
 	
-	@GetMapping({"/v1/agency","/"})
+	@GetMapping("/v1/agency")
 	@ResponseBody
 	public ResponseEntity<List<Agency>> getAllAgencies() {
 		List<Agency> agencyList = null;		
