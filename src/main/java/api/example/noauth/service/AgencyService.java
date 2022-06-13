@@ -1,6 +1,7 @@
 package api.example.noauth.service;
 
-import java.util.List; 
+import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,12 +10,13 @@ import org.springframework.stereotype.Service;
 
 import api.example.noauth.dao.jpa.AgencyRepository;
 import api.example.noauth.domain.Agency;
+import api.example.noauth.exception.ResourceNotFoundException;
 
 @Service
 public class AgencyService implements AgencyServiceInterface {
 
-	public static final Logger Log = LoggerFactory.getLogger(Agency.class); 
-	
+	public static final Logger Log = LoggerFactory.getLogger(Agency.class);
+
 	@Autowired
 	private AgencyRepository agencyR;
 
@@ -26,7 +28,12 @@ public class AgencyService implements AgencyServiceInterface {
 	}
 
 	public Agency getAgencia(long id) {
-		return agencyR.getAgenciaById(id);
+		Optional<Agency> result = agencyR.findById(id);
+		if (result.isPresent()) {
+			return agencyR.getAgenciaById(id);
+		}
+		throw new ResourceNotFoundException(
+				"Agency not Found ->" + String.valueOf(id));
 	}
 
 	public void updateAgency(Agency agency) {
@@ -34,20 +41,17 @@ public class AgencyService implements AgencyServiceInterface {
 	}
 
 	public void deleteAgency(long id) {
-		agencyR.deleteById(id);
-	}
-	
-	public List<Agency> findAll(){
-		return (List<Agency>) agencyR.findAll(); 
+		Long count = agencyR.countById(id);
+		if (count == null || count == 0) {
+			throw new ResourceNotFoundException(
+					"Agency not Found: " + String.valueOf(id));
+		} else
+			agencyR.deleteById(id);
+
 	}
 
-	/*
-	 * -- Probar paginado próximas versiones //http://goo.gl/7fxvVf public
-	 * Page<Agency> getAllAgencies(Integer page, Integer size) { Page
-	 * pageOfAgencies = agencyR.findAll(new PageRequest(page, size)); // example
-	 * of adding to the /metrics if (size > 50) {
-	 * counterService.increment("api.AgencyService.getAll.largePayload"); }
-	 * return pageOfAgencies; }
-	 * 
-	 */
+	public List<Agency> findAll() {
+		return (List<Agency>) agencyR.findAll();
+	}
+
 }

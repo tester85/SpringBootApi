@@ -61,7 +61,7 @@ public class AgencyController extends ApiAbstractHandler{
 	}
 	
 	@PostMapping("/delete/{id}")
-	public ResponseEntity<?> deleteUser(@PathVariable("id") Integer id){
+	public ResponseEntity<?> deleteUser(@PathVariable("id") Long id){
 		try {
 			agencyServ.deleteAgency(id);
 		} catch (Exception e) {

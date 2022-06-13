@@ -16,13 +16,7 @@
 					<a class="nav-link" href="/agency" th:href="@{/agency}">List all Agency</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/" th:href="@{/}">Add a new Agency</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/" th:href="@{/}">Update Agency</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/" th:href="@{/}">Delete Agency</a>
+					<a class="nav-link" href="/addAgency" th:href="@{/agency/new}">Add a new Agency</a>
 				</li>
 			</ul>
 		</div>
@@ -32,6 +26,7 @@
 	<div class="container">
 		<div><br/>
 			<h4>Listado de Agencias</h4>
+			<div th:if="${message}" class="alert alert-success text-center">[[${message}]]</div>
 			<div class="container">
 				<table class="table">
 					<thead class="table-dark">
@@ -40,6 +35,7 @@
 							<th>Description</th>
 							<th class="text-center">City</th>
 							<th class="text-center">Reservations</th>
+							<th colspan="2" class="text-center">Operations</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -48,9 +44,9 @@
 								<td th:text="${value.name}"></td>
 								<td th:text="${value.description}"></td>
 								<td class="text-center" th:text="${value.city}"></td>
-								<td class="text-center" th:text="${value.reservaciones}"></td>
-								<!--<td><a th:href="@{/edit/{id}(id=${value.id})}">Edit</a></td>
-								<td><a th:href="@{/delete/{id}(id=${value.id})}">Delete</a></td>-->
+								<!--<td class="text-center" th:text="${value.reservation}"></td>-->																
+								<td class="text-center"><a th:href="@{/agency/update/{id}(id=${value.id})}">Edit</a></td>
+								<td class="text-center"><a th:href="@{/agency/delete/{id}(id=${value.id})}">Delete</a></td>
 							</tr>
 					</tbody>
 				</table>

@@ -5,8 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import api.example.noauth.dao.jpa.AgencyRepository;
-import api.example.noauth.domain.Agency;
+import api.example.noauth.dao.jpa.AgencyRepository; 
 
 @SpringBootApplication
 public class ApiNoAuthApplication implements CommandLineRunner{
