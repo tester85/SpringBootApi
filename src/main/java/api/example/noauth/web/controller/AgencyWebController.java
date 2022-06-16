@@ -69,7 +69,7 @@ public class AgencyWebController {
 		return "redirect:/agency";
 	}
 
-	@PostMapping("/agency/update/{id}")
+	@GetMapping("/agency/update/{id}")
 	public String showEditAgency(@PathVariable Long id, RedirectAttributes ra,
 			Model model) {
 		try {
