@@ -1,5 +1,6 @@
 package api.example.noauth.controller;
 import api.example.noauth.domain.Agency;
+import api.example.noauth.exception.DataFormatException;
 
 import java.util.List;
 
@@ -53,9 +54,8 @@ public class AgencyController extends ApiAbstractHandler{
 		Agency data = agencyPost;
 		try {
 			agencyServ.createAgencia(data); 
-		} catch (Exception e) {
-		// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {		
+			new DataFormatException("Check your data, there is an error: ", e.getCause());
 		}
 			return new ResponseEntity<Agency>(data,HttpStatus.OK);		
 	}

@@ -47,7 +47,6 @@ public class AgencyService implements AgencyServiceInterface {
 					"Agency not Found: " + String.valueOf(id));
 		} else
 			agencyR.deleteById(id);
-
 	}
 
 	public List<Agency> findAll() {

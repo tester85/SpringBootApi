@@ -8,6 +8,8 @@ class ApiNoAuthApplicationTests {
 
 	@Test
 	void contextLoads() {
+		
+		
 	}
 
 }

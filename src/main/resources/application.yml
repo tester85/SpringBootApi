@@ -13,6 +13,7 @@ spring:
       username: root
     jpa:      show-sql: true
       hibernate:        ddl-auto: update
+      open-in-view: true
       properties:        hibernate:
           dialect: org.hibernate.dialect.MySQL5Dialect
           management:  endpoint:    beans:      enabled: true
@@ -20,9 +21,7 @@ spring:
     shutdown:      enabled: true    
     metrics:      enabled: true      
     health:
-      show-details: ALWAYS
-    security:
-      enabled: false 
+      show-details: ALWAYS 
   server:    base-path: /manage
     port: 9000
     address: 127.0.0.1       

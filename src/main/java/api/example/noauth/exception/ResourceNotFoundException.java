@@ -4,7 +4,12 @@ package api.example.noauth.exception;
  * HTTP 404 errors
  */
 public class ResourceNotFoundException extends RuntimeException {
-    public ResourceNotFoundException() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public ResourceNotFoundException() {
         super();
     }
 

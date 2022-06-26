@@ -4,7 +4,12 @@ package api.example.noauth.exception;
  * HTTP 400 errors
  */
 public final class DataFormatException extends RuntimeException {
-    public DataFormatException() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public DataFormatException() {
         super();
     }
 
