@@ -6,23 +6,39 @@ server:
   
 spring:
     security:
-      user:        name: test
+      user:
+        name: test
         password: test
-        roles:        - SUPERUSER       datasource:
-      url: jdbc:mysql://localhost:3306/agencia
+        roles:
+        - SUPERUSER   
+    datasource:
+      url: jdbc:mariadb://172.19.0.2:3306/agencia
       username: root
-    jpa:      show-sql: true
-      hibernate:        ddl-auto: update
+      password: root
+    jpa:
+      show-sql: true
+      hibernate:
+        ddl-auto: update
       open-in-view: true
-      properties:        hibernate:
-          dialect: org.hibernate.dialect.MySQL5Dialect
-          management:  endpoint:    beans:      enabled: true
-    info:      enabled: true
-    shutdown:      enabled: true    
-    metrics:      enabled: true      
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MariaDB102Dialect
+          
+
+management:
+  endpoint:
+    beans:
+      enabled: true
+    info:
+      enabled: true
+    shutdown:
+      enabled: true    
+    metrics:
+      enabled: true      
     health:
       show-details: ALWAYS 
-  server:    base-path: /manage
+  server:
+    base-path: /manage
     port: 9000
     address: 127.0.0.1       
     
